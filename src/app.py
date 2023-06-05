@@ -33,9 +33,11 @@ class MainWindow(QMainWindow):
         self.tabWidget.setCurrentIndex(0)
 
     def init_events(self):
-         self.refresh_action.triggered.connect(self.refresh_data)
+        self.refresh_action.triggered.connect(self.refresh_data)
 
-    def refresh_data():
+        self.launch_button.clicked.connect(self.launch_flatpak)
+
+    def refresh_data(self):
         self.fill_flatpak_table()
         self.fill_runtimes_table()
 
