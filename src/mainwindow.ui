@@ -102,12 +102,12 @@
           </attribute>
           <column>
            <property name="text">
-            <string>Nom</string>
+            <string>Name</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Identifiant</string>
+            <string>Package</string>
            </property>
           </column>
           <column>
@@ -117,12 +117,12 @@
           </column>
           <column>
            <property name="text">
-            <string>Branche</string>
+            <string>Branch</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Taille</string>
+            <string>Size</string>
            </property>
           </column>
           <column>
@@ -137,7 +137,7 @@
           </column>
           <column>
            <property name="text">
-            <string>Origine</string>
+            <string>Origin</string>
            </property>
           </column>
          </widget>
@@ -147,30 +147,33 @@
           <item>
            <widget class="QPushButton" name="launch_button">
             <property name="text">
-             <string>Lancer</string>
+             <string>Launch</string>
             </property>
             <property name="icon">
-             <iconset theme="launch"/>
+             <iconset theme="launch">
+              <normaloff>.</normaloff>.</iconset>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="install_button">
             <property name="text">
-             <string>Installer</string>
+             <string>Install</string>
             </property>
             <property name="icon">
-             <iconset theme="install"/>
+             <iconset theme="install">
+              <normaloff>.</normaloff>.</iconset>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="uninstall_button">
             <property name="text">
-             <string>Désintaller</string>
+             <string>Remove</string>
             </property>
             <property name="icon">
-             <iconset theme="remove"/>
+             <iconset theme="remove">
+              <normaloff>.</normaloff>.</iconset>
             </property>
            </widget>
           </item>
@@ -221,12 +224,12 @@
           </attribute>
           <column>
            <property name="text">
-            <string>Nom</string>
+            <string>Name</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Identifiant</string>
+            <string>Package</string>
            </property>
           </column>
           <column>
@@ -236,12 +239,12 @@
           </column>
           <column>
            <property name="text">
-            <string>Branche</string>
+            <string>Branch</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Taille</string>
+            <string>Size</string>
            </property>
           </column>
           <column>
@@ -255,7 +258,7 @@
       </widget>
       <widget class="QWidget" name="tab_3">
        <attribute name="title">
-        <string>Dépots</string>
+        <string>Repositories</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_4">
         <item row="0" column="0">
@@ -304,12 +307,12 @@
       </widget>
       <widget class="QWidget" name="tab_5">
        <attribute name="title">
-        <string>Historique</string>
+        <string>Log</string>
        </attribute>
       </widget>
       <widget class="QWidget" name="tab_4">
        <attribute name="title">
-        <string>Outils et aide</string>
+        <string>Tools and Troubleshooting</string>
        </attribute>
        <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
@@ -324,7 +327,7 @@
          <item row="0" column="0">
           <widget class="QLabel" name="label_5">
            <property name="text">
-            <string>Le programme Flatpak est installé ?</string>
+            <string>Is Flatpak installed?</string>
            </property>
           </widget>
          </item>
@@ -353,7 +356,7 @@
          <item row="0" column="0">
           <widget class="QLabel" name="label_2">
            <property name="text">
-            <string>Gérer les permissions (droits) des Flatpaks:</string>
+            <string>Manage Flatpack permissions:</string>
            </property>
           </widget>
          </item>
@@ -386,7 +389,7 @@
          <item row="0" column="0">
           <widget class="QLabel" name="label_3">
            <property name="text">
-            <string>Le dépot Flathub est installé et activé ?</string>
+            <string>Is the Flathub repository installed and activated?</string>
            </property>
           </widget>
          </item>
@@ -427,7 +430,7 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="refresh_action">
    <property name="text">
-    <string>Rafraichir</string>
+    <string>Refresh package cache</string>
    </property>
   </action>
  </widget>
