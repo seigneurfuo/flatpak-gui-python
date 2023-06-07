@@ -4,14 +4,13 @@
 ## Features
 - English translatio (in progress)
 - French translation
-- Search for installed / list avaibles packages
-- Search for installed / list avaibles runtimes
+- Search for installed / list availables applications
+- Search for installed / list availables runtimes
+- Install and remove applications
 - Launch an installed application
 
 
 ## TODO
-
-- Install an package
 - List repos
 - Show History
 - Add more tools to the toolstab
