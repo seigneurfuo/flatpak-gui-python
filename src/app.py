@@ -44,9 +44,10 @@ class MainWindow(QMainWindow):
 
     def init_events(self) -> None:
         self.refresh_action.triggered.connect(self.refresh_data)
+        self.package_search.textChanged.connect(self.on_search_text_changed)
 
         self.launch_button.clicked.connect(self.launch_flatpak)
-        self.install_button.clicked.connect(self.uninstall_flatpak)
+        self.install_button.clicked.connect(self.install_flatpak)
         self.uninstall_button.clicked.connect(self.uninstall_flatpak)
         self.flatseal_install_button.clicked.connect(lambda install, FLATSEAL=FLATSEAL: self.flatpyk_instance.install([FLATSEAL]))
         self.flatseal_launch_button.clicked.connect(lambda run, FLATSEAL=FLATSEAL: self.flatpyk_instance.run(FLATSEAL))
@@ -67,12 +68,17 @@ class MainWindow(QMainWindow):
         self.fill_remotes_table()
         self.fill_tools_tab()
 
+    def on_search_text_changed(self) -> None:
+        self.fill_flatpak_table()
+        self.fill_runtimes_table()
+
     def fill_flatpak_table(self) -> None:
+        search = self.package_search.text()
+
         if self.comboBox.currentIndex() == 0:
-            packages = self.flatpyk_instance.list_installed(filters=["apps"])
-            
+            packages = self.flatpyk_instance.list_installed(filters=["apps"], search=search)
         else:
-            packages = self.flatpyk_instance.list_availables(filters=["apps"])
+            packages = self.flatpyk_instance.list_availables(filters=["apps"], search=search, use_cached=True)
         
         self.tableWidget.setRowCount(len(packages))
 
@@ -89,11 +95,13 @@ class MainWindow(QMainWindow):
         self.tableWidget.horizontalHeader().setSectionResizeMode(self.tableWidget.columnCount() - 1, QHeaderView.ResizeToContents)
 
     def fill_runtimes_table(self) -> None:
+        search = self.package_search.text()
+
         if self.comboBox.currentIndex() == 0:
-            runtimes = self.flatpyk_instance.list_installed(filters=["runtimes"])
+            runtimes = self.flatpyk_instance.list_installed(filters=["runtimes"], search=search)
             
         else:
-            runtimes = self.flatpyk_instance.list_availables(filters=["runtimes"])
+            runtimes = self.flatpyk_instance.list_availables(filters=["runtimes"], search=search, use_cached=True)
         
         self.tableWidget_2.setRowCount(len(runtimes))
 
@@ -115,8 +123,7 @@ class MainWindow(QMainWindow):
         selected_item = self.tableWidget.item(self.tableWidget.currentRow(), 0)
         if selected_item:
             flatpak_id = selected_item.data(Qt.UserRole)
-            cmd = "flatpak install {}".format(flatpak_id)
-            self.flatpyk_instance.gui_terminal(cmd)
+            self.flatpyk_instance.install([flatpak_id])
 
             self.refresh_data()
 

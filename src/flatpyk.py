@@ -4,7 +4,10 @@ from distutils import spawn
 
 class Flatpyk:
     def __init__(self):
-            self.flatpak_executable_found = spawn.find_executable("flatpak") is not None
+        self.flatpak_executable_found = spawn.find_executable("flatpak") is not None
+
+        self.availables_packages_cache = []
+        self.availables_runtimes_cache = []
 
     def _execute_cli(self, cmd):
         process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -15,7 +18,15 @@ class Flatpyk:
     def _parse_output(self, text):
         return [row.split("\t") for row in text.split("\n") if row]
 
-    def list_installed(self, filters=[]):
+    def _search_filter_package_name(self, results, search):
+        filtered_results = []
+        for item_index, item in enumerate(results):
+            if item[0].lower().startswith(search.lower()) or item[1].lower().startswith(search.lower()):
+                filtered_results.append(item)
+
+        return filtered_results
+
+    def list_installed(self, filters=[], search=None):
         cmd = "flatpak list"
 
         if filters:
@@ -26,42 +37,66 @@ class Flatpyk:
                 cmd += " --runtime --columns=name,application,version,branch,size,installation"
 
         stdout, stderr, return_code = self._execute_cli(cmd)
-        return self._parse_output(stdout)
+        results = self._parse_output(stdout)
 
-    def list_availables(self, filters=[]):
+        if search:
+            results = self._search_filter_package_name(results, search)
+        
+        return results
+
+    def list_availables(self, filters=[], search=None, use_cached=False):
         cmd = "flatpak remote-ls"
 
-        if filters:
-            if "apps" in filters:
+        # FIltre obligatoires: TODO: All
+        if not filters:
+            return []
+
+        if "apps" in filters:
+            if not (self.availables_packages_cache and use_cached):
+                print("Generating cache for available apps")
+
                 cmd += " --app --columns=name,application,version,branch,installed-size,runtime,origin"
+                stdout, stderr, return_code = self._execute_cli(cmd)
+                self.availables_packages_cache = self._parse_output(stdout)
+                
+            results = self.availables_packages_cache
 
-            elif "runtimes" in filters:
+        elif "runtimes" in filters:
+            if not (self.availables_runtimes_cache or use_cached):
+                print("Generating cache for available runtimes")
+
                 cmd += " --runtime --columns=name,application,version,branch,installed-size"
+                stdout, stderr, return_code = self._execute_cli(cmd)
+                self.availables_runtimes_cache = self._parse_output(stdout)
+                
+            results = self.availables_runtimes_cache
 
-        stdout, stderr, return_code = self._execute_cli(cmd)
-        return self._parse_output(stdout)
+        if search:
+            results = self._search_filter_package_name(results, search)
+
+        return results
 
     def list_remotes(self):
         cmd = "flatpak remote --columns=name,title,url,homepage"
         stdout, stderr, return_code = self._execute_cli(cmd)
         return self._parse_output(stdout)
 
-    def run(self, flatpak_id) -> None:
+    def run(self, flatpak_id: str) -> None:
         cmd = ["flatpak", "run", flatpak_id]
         subprocess.Popen(cmd)
 
         # TODO: Erreurs et +
 
-    def gui_terminal(self, cmd, sleep=2) -> None:
+    def gui_terminal(self, cmd: str, sleep=2) -> None:
+        # TODO: Sleep
         cmd = ["xterm", "-e", cmd]
         subprocess.call(cmd)
 
     def install(self, packages: list) -> None:
-        cmd = "flatpak install {}; sleep {}".format("".join(packages))
+        cmd = "flatpak install {}; sleep 2".format("".join(packages))
         print(cmd)
         self.gui_terminal(cmd, sleep=2)
 
 if __name__ == "__main__":
     flatpyk = Flatpyk()
-    t = flatpyk.list_installed()
-    print(t)
+    t = flatpyk.install(["ca.desrt.dconf-editor"])
