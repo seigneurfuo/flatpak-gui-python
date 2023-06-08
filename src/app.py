@@ -44,7 +44,7 @@ class MainWindow(QMainWindow):
 
     def init_events(self) -> None:
         self.refresh_action.triggered.connect(self.refresh_data)
-        self.package_search.textChanged.connect(self.on_search_text_changed)
+        self.package_search.returnPressed.connect(self.on_search_text_changed)
 
         self.launch_button.clicked.connect(self.launch_flatpak)
         self.install_button.clicked.connect(self.install_flatpak)
