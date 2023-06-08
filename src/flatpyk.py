@@ -2,9 +2,14 @@ import subprocess
 import shlex
 from distutils import spawn
 
+from terminal import Terminal
+
 class Flatpyk:
     def __init__(self):
-        self.flatpak_executable_found = spawn.find_executable("flatpak") is not None
+        self.flatpak_executable_path = spawn.find_executable("flatpak")
+        self.flatpak_executable_found = self.flatpak_executable_path is not None
+        self.terminal = Terminal()
+        #self.terminal.get_default_terminal()
 
         self.availables_packages_cache = []
         self.availables_runtimes_cache = []
@@ -27,7 +32,7 @@ class Flatpyk:
         return filtered_results
 
     def list_installed(self, filters=[], search=None):
-        cmd = "flatpak list"
+        cmd = f"{self.flatpak_executable_path} list"
 
         if filters:
             if "apps" in filters:
@@ -45,7 +50,7 @@ class Flatpyk:
         return results
 
     def list_availables(self, filters=[], search=None, use_cached=False):
-        cmd = "flatpak remote-ls"
+        cmd = f"{self.flatpak_executable_path} remote-ls"
 
         # FIltre obligatoires: TODO: All
         if not filters:
@@ -77,26 +82,22 @@ class Flatpyk:
         return results
 
     def list_remotes(self):
-        cmd = "flatpak remote --columns=name,title,url,homepage"
+        cmd = f"{self.flatpak_executable_path} remote --columns=name,title,url,homepage"
         stdout, stderr, return_code = self._execute_cli(cmd)
         return self._parse_output(stdout)
 
     def run(self, flatpak_id: str) -> None:
-        cmd = ["flatpak", "run", flatpak_id]
+        cmd = [self.flatpak_executable_path, "run", flatpak_id]
         subprocess.Popen(cmd)
 
         # TODO: Erreurs et +
 
     def gui_terminal(self, cmd: str, sleep=2) -> None:
         # TODO: Sleep
-        cmd = ["xterm", "-e", cmd]
+        cmd = self.terminal.default_terminal.split(" ") + [cmd]
         subprocess.call(cmd)
 
     def install(self, packages: list) -> None:
-        cmd = "flatpak install {}; sleep 2".format("".join(packages))
+        cmd = "{} install {} && sleep 2".format(self.flatpak_executable_path, "".join(packages))
         print(cmd)
         self.gui_terminal(cmd, sleep=2)
-
-if __name__ == "__main__":
-    flatpyk = Flatpyk()
-    t = flatpyk.install(["ca.desrt.dconf-editor"])
