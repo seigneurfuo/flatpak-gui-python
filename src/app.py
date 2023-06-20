@@ -2,15 +2,14 @@
 import json
 import sys
 import os
-from pathlib import Path
+
 from distutils import spawn
 
 from flatpyk import Flatpyk
 
-from PyQt5.QtGui import QColor, QDesktopServices
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QHeaderView
+from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QHeaderView, QDesktopWidget
 from PyQt5.uic import loadUi
-from PyQt5.QtCore import Qt, QUrl, QProcess
+from PyQt5.QtCore import Qt, QTranslator, QLocale
 
 __name__ = "Flatpak GUI"
 __version__ = "0.1.0"
@@ -44,6 +43,8 @@ class MainWindow(QMainWindow):
 
     def init_events(self) -> None:
         self.refresh_action.triggered.connect(self.refresh_data)
+        self.exit_action.triggered.connect(self.close)
+
         self.package_search.returnPressed.connect(self.on_search_text_changed)
 
         self.launch_button.clicked.connect(self.launch_flatpak)

@@ -1,4 +1,4 @@
-__pycache__/
-*.pyc
+.idea
 src/__pycache__/
 src/*.pyc
+src/translations/*.qm
