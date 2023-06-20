@@ -14,3 +14,24 @@
 - List repos
 - Show History
 - Add more tools to the toolstab
+
+## Contributing
+
+1. Create an new translation file
+   Example: If you want to add French translation:
+
+   ```
+   pylupdate5 src/app.py src/mainwindow.ui -ts src/translations/ja.ts
+   ```
+
+2. Translate
+   Use QtLinguist to open the created .ts file and translate the strings with it.
+
+3. Generate the translation file
+
+   ```
+   lrelease-qt5 src/translations/ja.ts -qm src/translations/ja.qm
+   ```
+
+   
+

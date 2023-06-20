@@ -166,13 +166,16 @@ class MainWindow(QMainWindow):
             self.flatseal_launch_button.setEnabled(False)
 
 def main() -> None:
-    import cgitb
-    cgitb.enable(format='text')
-
     application = QApplication(sys.argv)
+
+    translator = QTranslator(application)
+    translator.load(QLocale().system().name(), os.path.join(os.path.dirname(os.path.realpath(__file__)), "translations"))
+    application.installTranslator(translator)
+
     mainwindow = MainWindow()
-    mainwindow.move(application.desktop().screen().rect().center() - mainwindow.rect().center())
+    #mainwindow.move(QDesktopWidget().availableGeometry().center())
     mainwindow.show()
-    application.exec()
+
+    sys.exit(application.exec())
 
 main()
