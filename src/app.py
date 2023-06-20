@@ -24,7 +24,7 @@ class MainWindow(QMainWindow):
         self.flatpyk_instance = Flatpyk()
 
         if not self.flatpyk_instance.flatpak_executable_found:
-            print("Erreur: Impossible de trouver Flatpak")
+            print(self.tr("Unable to find the Flatpak executable in the path"))
 
         self.xterm_available = None
 
