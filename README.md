@@ -2,10 +2,10 @@
 ![](docs/imgs/2023-06-05_14-37-26.png)
 
 ## Features
-- English translatio (in progress)
+- English translation (in progress)
 - French translation
-- Search for installed / list availables applications
-- Search for installed / list availables runtimes
+- Search for installed / list available applications
+- Search for installed / list available runtimes
 - Install and remove applications
 - Launch an installed application
 
@@ -16,6 +16,8 @@
 - Add more tools to the toolstab
 
 ## Contributing
+
+### Translations
 
 1. Create an new translation file
    Example: If you want to add French translation:
