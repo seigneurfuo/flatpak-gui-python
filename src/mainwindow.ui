@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string notr="true"/>
   </property>
   <property name="windowIcon">
    <iconset theme="application-vnd.flatpak">
@@ -271,6 +271,60 @@
        <attribute name="title">
         <string>Log</string>
        </attribute>
+       <layout class="QGridLayout" name="gridLayout_5">
+        <item row="0" column="0">
+         <widget class="QTableWidget" name="tableWidget_4">
+          <property name="verticalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOn</enum>
+          </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOn</enum>
+          </property>
+          <property name="verticalScrollMode">
+           <enum>QAbstractItemView::ScrollPerPixel</enum>
+          </property>
+          <property name="horizontalScrollMode">
+           <enum>QAbstractItemView::ScrollPerPixel</enum>
+          </property>
+          <property name="sortingEnabled">
+           <bool>true</bool>
+          </property>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>Time</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Change</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Application</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Branch</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Installation</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Remote</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="tab_4">
        <attribute name="title">
@@ -281,7 +335,7 @@
          <rect>
           <x>20</x>
           <y>30</y>
-          <width>428</width>
+          <width>431</width>
           <height>26</height>
          </rect>
         </property>
@@ -293,7 +347,7 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
+         <item row="0" column="2">
           <widget class="QCheckBox" name="flatpak_checkbox">
            <property name="enabled">
             <bool>false</bool>
@@ -302,6 +356,19 @@
             <string/>
            </property>
           </widget>
+         </item>
+         <item row="0" column="1">
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </widget>
@@ -348,14 +415,7 @@
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_7">
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_3">
-           <property name="text">
-            <string>Is the Flathub repository installed and activated?</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
+         <item row="0" column="2">
           <widget class="QCheckBox" name="flathub_checkbox">
            <property name="enabled">
             <bool>false</bool>
@@ -364,6 +424,26 @@
             <string/>
            </property>
           </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Is the Flathub repository installed and activated?</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </widget>
@@ -434,6 +514,7 @@
      <string>File</string>
     </property>
     <addaction name="refresh_action"/>
+    <addaction name="exit_action"/>
    </widget>
    <addaction name="menuFichiers"/>
   </widget>
@@ -441,6 +522,11 @@
   <action name="refresh_action">
    <property name="text">
     <string>Refresh package cache</string>
+   </property>
+  </action>
+  <action name="exit_action">
+   <property name="text">
+    <string>Exit</string>
    </property>
   </action>
  </widget>

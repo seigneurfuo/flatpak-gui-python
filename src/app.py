@@ -25,8 +25,6 @@ class MainWindow(QMainWindow):
         if not self.flatpyk_instance.flatpak_executable_found:
             print(self.tr("Unable to find the Flatpak executable in the path"))
 
-        self.xterm_available = None
-
         self.check_requirements()
 
         self.init_ui()
@@ -67,6 +65,7 @@ class MainWindow(QMainWindow):
         self.fill_flatpak_table()
         self.fill_runtimes_table()
         self.fill_remotes_table()
+        self.fill_history_table()
         self.fill_tools_tab()
 
     def on_search_text_changed(self) -> None:
@@ -150,11 +149,26 @@ class MainWindow(QMainWindow):
         self.tableWidget_3.resizeColumnsToContents()
         self.tableWidget_3.horizontalHeader().setSectionResizeMode(self.tableWidget_3.columnCount() - 1, QHeaderView.ResizeToContents)
 
+    def fill_history_table(self) -> None:
+        history = self.flatpyk_instance.get_history()
+
+        self.tableWidget_4.setRowCount(len(history))
+
+        for row_index, row in enumerate(history):
+            for col_index, value in enumerate(row):
+                item = QTableWidgetItem(value)
+                self.tableWidget_4.setItem(row_index, col_index, item)
+
+        self.tableWidget_4.resizeColumnsToContents()
+        self.tableWidget_4.horizontalHeader().setSectionResizeMode(self.tableWidget_3.columnCount() - 1, QHeaderView.ResizeToContents)
+
     def fill_tools_tab(self) -> None:
         # ----- Flatpak -----
         self.flatpak_checkbox.setChecked(self.flatpyk_instance.flatpak_executable_found)
         
         # ----- Flathub -----
+        remotes = [remote[0] for remote in self.flatpyk_instance.list_remotes()]
+        self.flathub_checkbox.setChecked("flathub" in remotes)
 
         # ----- Flatseal -----
         installed_apps = [package[1] for package in self.flatpyk_instance.list_installed(filters=["apps"])]
