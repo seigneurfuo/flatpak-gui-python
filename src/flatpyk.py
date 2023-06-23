@@ -86,6 +86,8 @@ class Flatpyk:
         stdout, stderr, return_code = self._execute_cli(cmd)
         return self._parse_output(stdout)
 
+    def get_history(self):
+        cmd = f"{self.flatpak_executable_path} history --columns=time,change,application,branch,installation,remote"
         stdout, stderr, return_code = self._execute_cli(cmd)
         return self._parse_output(stdout)
 
