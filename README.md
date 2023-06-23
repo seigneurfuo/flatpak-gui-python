@@ -9,6 +9,27 @@
 - Install and remove applications
 - Launch an installed application
 
+## How to use ?
+
+1. Clone this repository
+
+2. Install the required dependencies.
+
+3. Open a terminal in the f* At the moment, it's the only way to launch the app. In the future, I will make a script to launch it.
+
+4. Launch **src/app.py** with Python3:
+
+   ```sh
+   python3 src/app.py
+   ```
+
+
+
+### Dependencies
+
+- Python 3
+- PyQt5
+
 
 ## TODO
 - List repos
