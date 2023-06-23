@@ -82,7 +82,10 @@ class Flatpyk:
         return results
 
     def list_remotes(self):
-        cmd = f"{self.flatpak_executable_path} remote --columns=name,title,url,homepage"
+        cmd = f"{self.flatpak_executable_path} remotes --columns=name,title,url,homepage"
+        stdout, stderr, return_code = self._execute_cli(cmd)
+        return self._parse_output(stdout)
+
         stdout, stderr, return_code = self._execute_cli(cmd)
         return self._parse_output(stdout)
 
