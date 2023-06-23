@@ -9,7 +9,7 @@ class Flatpyk:
         self.flatpak_executable_path = spawn.find_executable("flatpak")
         self.flatpak_executable_found = self.flatpak_executable_path is not None
         self.terminal = Terminal()
-        #self.terminal.get_default_terminal()
+        self.terminal.get_default_terminal()
 
         self.availables_packages_cache = []
         self.availables_runtimes_cache = []
@@ -94,7 +94,7 @@ class Flatpyk:
 
     def gui_terminal(self, cmd: str, sleep=2) -> None:
         # TODO: Sleep
-        cmd = self.terminal.default_terminal.split(" ") + [cmd]
+        cmd = self.terminal.default_terminal.split(" ") + cmd.split(" ")
         subprocess.call(cmd)
 
     def install(self, packages: list) -> None:

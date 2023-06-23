@@ -5,8 +5,8 @@ class Terminal:
     def __init__(self):
         self.ignored_executables = []
         xterm_executable = spawn.find_executable("xterm")
-        if not xterm_executable:
-            exit(1)
+        #if not xterm_executable:
+        #    exit(1)
 
         self.fallback_terminal = f"{xterm_executable} -e"
         self.default_terminal = self.fallback_terminal
