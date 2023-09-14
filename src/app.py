@@ -7,9 +7,9 @@ from distutils import spawn
 
 from flatpyk import Flatpyk
 
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QHeaderView, QDesktopWidget
-from PyQt5.uic import loadUi
-from PyQt5.QtCore import Qt, QTranslator, QLocale
+from PyQt6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QHeaderView
+from PyQt6.uic import loadUi
+from PyQt6.QtCore import Qt, QTranslator, QLocale
 
 __name__ = "Flatpak GUI"
 __version__ = "0.1.0"
@@ -87,12 +87,12 @@ class MainWindow(QMainWindow):
                 item = QTableWidgetItem(value)
                 
                 if col_index == 0:
-                    item.setData(Qt.UserRole, row[1])
+                    item.setData(Qt.ItemDataRole.UserRole, row[1])
 
                 self.tableWidget.setItem(row_index, col_index, item)
 
         self.tableWidget.resizeColumnsToContents()
-        self.tableWidget.horizontalHeader().setSectionResizeMode(self.tableWidget.columnCount() - 1, QHeaderView.ResizeToContents)
+        self.tableWidget.horizontalHeader().setSectionResizeMode(self.tableWidget.columnCount() - 1, QHeaderView.ResizeMode.ResizeToContents)
 
     def fill_runtimes_table(self) -> None:
         search = self.package_search.text()
@@ -111,18 +111,18 @@ class MainWindow(QMainWindow):
                 self.tableWidget_2.setItem(row_index, col_index, item)
 
         self.tableWidget_2.resizeColumnsToContents()
-        self.tableWidget_2.horizontalHeader().setSectionResizeMode(self.tableWidget_2.columnCount() - 1, QHeaderView.ResizeToContents)
+        self.tableWidget_2.horizontalHeader().setSectionResizeMode(self.tableWidget_2.columnCount() - 1, QHeaderView.ResizeMode.ResizeToContents)
 
     def launch_flatpak(self) -> None:
         selected_item = self.tableWidget.item(self.tableWidget.currentRow(), 0)
         if selected_item:
-            flatpak_id = selected_item.data(Qt.UserRole)
+            flatpak_id = selected_item.data(Qt.ItemDataRole.UserRole)
             self.flatpyk_instance.run(flatpak_id)
 
     def install_flatpak(self) -> None:
         selected_item = self.tableWidget.item(self.tableWidget.currentRow(), 0)
         if selected_item:
-            flatpak_id = selected_item.data(Qt.UserRole)
+            flatpak_id = selected_item.data(Qt.ItemDataRole.UserRole)
             self.flatpyk_instance.install([flatpak_id])
 
             self.refresh_data()
@@ -130,7 +130,7 @@ class MainWindow(QMainWindow):
     def uninstall_flatpak(self) -> None:
         selected_item = self.tableWidget.item(self.tableWidget.currentRow(), 0)
         if selected_item:
-            flatpak_id = selected_item.data(Qt.UserRole)
+            flatpak_id = selected_item.data(Qt.ItemDataRole.UserRole)
             cmd = "flatpak uninstall {}".format(flatpak_id)
             self.flatpyk_instance.gui_terminal(cmd)
 
@@ -147,7 +147,7 @@ class MainWindow(QMainWindow):
                 self.tableWidget_3.setItem(row_index, col_index, item)
 
         self.tableWidget_3.resizeColumnsToContents()
-        self.tableWidget_3.horizontalHeader().setSectionResizeMode(self.tableWidget_3.columnCount() - 1, QHeaderView.ResizeToContents)
+        self.tableWidget_3.horizontalHeader().setSectionResizeMode(self.tableWidget_3.columnCount() - 1, QHeaderView.ResizeMode.ResizeToContents)
 
     def fill_history_table(self) -> None:
         history = self.flatpyk_instance.get_history()
@@ -160,7 +160,7 @@ class MainWindow(QMainWindow):
                 self.tableWidget_4.setItem(row_index, col_index, item)
 
         self.tableWidget_4.resizeColumnsToContents()
-        self.tableWidget_4.horizontalHeader().setSectionResizeMode(self.tableWidget_3.columnCount() - 1, QHeaderView.ResizeToContents)
+        self.tableWidget_4.horizontalHeader().setSectionResizeMode(self.tableWidget_3.columnCount() - 1, QHeaderView.ResizeMode.ResizeToContents)
 
     def fill_tools_tab(self) -> None:
         # ----- Flatpak -----
