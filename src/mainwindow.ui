@@ -28,7 +28,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="icon">
@@ -345,6 +345,9 @@
        </layout>
       </widget>
       <widget class="QWidget" name="tab_4">
+       <attribute name="icon">
+        <iconset theme="tools"/>
+       </attribute>
        <attribute name="title">
         <string>Tools and Troubleshooting</string>
        </attribute>
