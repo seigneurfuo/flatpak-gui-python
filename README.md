@@ -2,7 +2,7 @@
 ![](docs/imgs/2023-06-05_14-37-26.png)
 
 ## Features
-- English translation (in progress)
+- English translation
 - French translation
 - Search for installed / list available applications
 - Search for installed / list available runtimes
@@ -10,7 +10,6 @@
 - Launch an installed application
 
 ## How to use ?
-
 1. Clone this repository
 
 2. Install the required dependencies.
@@ -23,12 +22,9 @@
    python3 src/app.py
    ```
 
-
-
 ### Dependencies
-
 - Python 3
-- PyQt5
+- PyQt6
 
 
 ## TODO
@@ -44,7 +40,7 @@
    Example: If you want to add French translation:
 
    ```
-   pylupdate5 src/app.py src/mainwindow.ui -ts src/translations/ja.ts
+   pylupdate6 src/app.py src/mainwindow.ui -ts src/translations/ja.ts
    ```
 
 2. Translate
@@ -53,7 +49,7 @@
 3. Generate the translation file
 
    ```
-   lrelease-qt5 src/translations/ja.ts -qm src/translations/ja.qm
+   lrelease-qt6 src/translations/ja.ts -qm src/translations/ja.qm
    ```
 
    
