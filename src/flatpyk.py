@@ -81,6 +81,10 @@ class Flatpyk:
 
         return results
 
+    def list_updates():
+        # TODO: flatpak remote-ls --updates
+        pass
+
     def list_remotes(self):
         cmd = f"{self.flatpak_executable_path} remotes --columns=name,title,url,homepage"
         stdout, stderr, return_code = self._execute_cli(cmd)

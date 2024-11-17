@@ -14,8 +14,7 @@
    <string notr="true"/>
   </property>
   <property name="windowIcon">
-   <iconset theme="application-vnd.flatpak">
-    <normaloff>.</normaloff>.</iconset>
+   <iconset theme="application-vnd.flatpak"/>
   </property>
   <property name="iconSize">
    <size>
@@ -28,12 +27,11 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="icon">
-        <iconset theme="application-vnd.flatpak">
-         <normaloff>.</normaloff>.</iconset>
+        <iconset theme="application-vnd.flatpak"/>
        </attribute>
        <attribute name="title">
         <string>Applications</string>
@@ -42,22 +40,22 @@
         <item row="0" column="0">
          <widget class="QTableWidget" name="tableWidget">
           <property name="verticalScrollBarPolicy">
-           <enum>Qt::ScrollBarAlwaysOn</enum>
+           <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
           </property>
           <property name="horizontalScrollBarPolicy">
-           <enum>Qt::ScrollBarAlwaysOn</enum>
+           <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
           </property>
           <property name="selectionMode">
-           <enum>QAbstractItemView::SingleSelection</enum>
+           <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
           </property>
           <property name="selectionBehavior">
-           <enum>QAbstractItemView::SelectRows</enum>
+           <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
           </property>
           <property name="verticalScrollMode">
-           <enum>QAbstractItemView::ScrollPerPixel</enum>
+           <enum>QAbstractItemView::ScrollMode::ScrollPerPixel</enum>
           </property>
           <property name="horizontalScrollMode">
-           <enum>QAbstractItemView::ScrollPerPixel</enum>
+           <enum>QAbstractItemView::ScrollMode::ScrollPerPixel</enum>
           </property>
           <property name="sortingEnabled">
            <bool>true</bool>
@@ -115,8 +113,7 @@
              <string>Launch</string>
             </property>
             <property name="icon">
-             <iconset theme="launch">
-              <normaloff>.</normaloff>.</iconset>
+             <iconset theme="launch"/>
             </property>
            </widget>
           </item>
@@ -126,8 +123,7 @@
              <string>Install</string>
             </property>
             <property name="icon">
-             <iconset theme="install">
-              <normaloff>.</normaloff>.</iconset>
+             <iconset theme="install"/>
             </property>
            </widget>
           </item>
@@ -137,15 +133,14 @@
              <string>Remove</string>
             </property>
             <property name="icon">
-             <iconset theme="remove">
-              <normaloff>.</normaloff>.</iconset>
+             <iconset theme="remove"/>
             </property>
            </widget>
           </item>
           <item>
            <spacer name="horizontalSpacer_2">
             <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+             <enum>Qt::Orientation::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -160,6 +155,9 @@
        </layout>
       </widget>
       <widget class="QWidget" name="tab_2">
+       <attribute name="icon">
+        <iconset theme="start-here"/>
+       </attribute>
        <attribute name="title">
         <string>Runtimes</string>
        </attribute>
@@ -167,22 +165,22 @@
         <item row="0" column="0">
          <widget class="QTableWidget" name="tableWidget_2">
           <property name="verticalScrollBarPolicy">
-           <enum>Qt::ScrollBarAlwaysOn</enum>
+           <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
           </property>
           <property name="horizontalScrollBarPolicy">
-           <enum>Qt::ScrollBarAlwaysOn</enum>
+           <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
           </property>
           <property name="selectionMode">
-           <enum>QAbstractItemView::SingleSelection</enum>
+           <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
           </property>
           <property name="selectionBehavior">
-           <enum>QAbstractItemView::SelectRows</enum>
+           <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
           </property>
           <property name="verticalScrollMode">
-           <enum>QAbstractItemView::ScrollPerPixel</enum>
+           <enum>QAbstractItemView::ScrollMode::ScrollPerPixel</enum>
           </property>
           <property name="horizontalScrollMode">
-           <enum>QAbstractItemView::ScrollPerPixel</enum>
+           <enum>QAbstractItemView::ScrollMode::ScrollPerPixel</enum>
           </property>
           <property name="sortingEnabled">
            <bool>true</bool>
@@ -225,6 +223,9 @@
        </layout>
       </widget>
       <widget class="QWidget" name="tab_3">
+       <attribute name="icon">
+        <iconset theme="network-workgroup"/>
+       </attribute>
        <attribute name="title">
         <string>Repositories</string>
        </attribute>
@@ -232,22 +233,22 @@
         <item row="0" column="0">
          <widget class="QTableWidget" name="tableWidget_3">
           <property name="verticalScrollBarPolicy">
-           <enum>Qt::ScrollBarAlwaysOn</enum>
+           <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
           </property>
           <property name="horizontalScrollBarPolicy">
-           <enum>Qt::ScrollBarAlwaysOn</enum>
+           <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
           </property>
           <property name="selectionMode">
-           <enum>QAbstractItemView::SingleSelection</enum>
+           <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
           </property>
           <property name="selectionBehavior">
-           <enum>QAbstractItemView::SelectRows</enum>
+           <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
           </property>
           <property name="verticalScrollMode">
-           <enum>QAbstractItemView::ScrollPerPixel</enum>
+           <enum>QAbstractItemView::ScrollMode::ScrollPerPixel</enum>
           </property>
           <property name="horizontalScrollMode">
-           <enum>QAbstractItemView::ScrollPerPixel</enum>
+           <enum>QAbstractItemView::ScrollMode::ScrollPerPixel</enum>
           </property>
           <property name="sortingEnabled">
            <bool>true</bool>
@@ -280,6 +281,9 @@
        </layout>
       </widget>
       <widget class="QWidget" name="tab_5">
+       <attribute name="icon">
+        <iconset theme="text-x-generic"/>
+       </attribute>
        <attribute name="title">
         <string>Log</string>
        </attribute>
@@ -287,22 +291,22 @@
         <item row="0" column="0">
          <widget class="QTableWidget" name="tableWidget_4">
           <property name="verticalScrollBarPolicy">
-           <enum>Qt::ScrollBarAlwaysOn</enum>
+           <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
           </property>
           <property name="horizontalScrollBarPolicy">
-           <enum>Qt::ScrollBarAlwaysOn</enum>
+           <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
           </property>
           <property name="selectionMode">
-           <enum>QAbstractItemView::SingleSelection</enum>
+           <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
           </property>
           <property name="selectionBehavior">
-           <enum>QAbstractItemView::SelectRows</enum>
+           <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
           </property>
           <property name="verticalScrollMode">
-           <enum>QAbstractItemView::ScrollPerPixel</enum>
+           <enum>QAbstractItemView::ScrollMode::ScrollPerPixel</enum>
           </property>
           <property name="horizontalScrollMode">
-           <enum>QAbstractItemView::ScrollPerPixel</enum>
+           <enum>QAbstractItemView::ScrollMode::ScrollPerPixel</enum>
           </property>
           <property name="sortingEnabled">
            <bool>true</bool>
@@ -364,7 +368,7 @@
          <item row="0" column="0">
           <widget class="QLabel" name="label_5">
            <property name="text">
-            <string>Is Flatpak installed?</string>
+            <string>Is Flatpak installed ?</string>
            </property>
           </widget>
          </item>
@@ -381,7 +385,7 @@
          <item row="0" column="1">
           <spacer name="horizontalSpacer_3">
            <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+            <enum>Qt::Orientation::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -449,14 +453,14 @@
          <item row="0" column="0">
           <widget class="QLabel" name="label_3">
            <property name="text">
-            <string>Is the Flathub repository installed and activated?</string>
+            <string>Is the Flathub repository installed and activated ?</string>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
           <spacer name="horizontalSpacer_4">
            <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+            <enum>Qt::Orientation::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -507,7 +511,7 @@
       <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
